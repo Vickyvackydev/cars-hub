@@ -765,7 +765,7 @@ const CartPage = () => {
                 text={`${waiting ? "please wait..." : "checkout page"}`}
                 textStyles="text-white"
                 btnStyles="bg-red-400 py-2 px-3 rounded-lg"
-                handleClick={() => router.push("/HomePage/successful")}
+                handleClick={() => router.push("/successful")}
               />
             </div>
           </div>

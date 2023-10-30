@@ -127,11 +127,11 @@ const Navbar = () => {
           btnStyles="bg-red-400 w-fit h-fit rounded-lg py-3 mt-6 lg:ml-[15rem] xs:ml-[5rem] flex gap-2 flex-row-reverse "
           icon={<FaPaperPlane />}
           iconStyles="text-white pt-[0.4rem]"
-          handleClick={() => router.push("/HomePage/contact_info")}
+          handleClick={() => router.push("/contact_info")}
         />
 
         <Link
-          href="/HomePage/cart"
+          href="/cart"
           className="w-10 h-10 rounded-full items-center flex justify-center bg-red-400 absolute lg:right-[5rem] xs:right-[2rem] top-[15rem] lg:z-50 xs:-z-10"
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
