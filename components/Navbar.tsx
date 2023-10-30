@@ -17,7 +17,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const Navbar = () => {
-  // const [open, setOpen] = useState(false);
+  const [ismobile, setIsmobile] = useState(false);
   const [NavOpen, setNavOpen] = useState(false);
   const [hover, setHover] = useState(false);
   const [activeComponent, setActiveComponent] = useState<string | null>(null);
@@ -25,23 +25,12 @@ const Navbar = () => {
   const { cartItems, itemsAdded } = useCart();
   const router = useRouter();
 
-  const mobile = window.innerWidth <= 768 ? true : false;
-  // useEffect(() => {
-  //   const checkWindowWidth = () => {
-  //     if (window.innerWidth <= 768) {
-  //       setOpen(false);
-  //     } else {
-  //       setOpen(true);
-  //     }
-  //   };
-  //   checkWindowWidth();
-  //   window.addEventListener("resize", checkWindowWidth);
-
-  //   return () => {
-  //     window.removeEventListener("resize", checkWindowWidth);
-  //   };
-  // }, []);
-
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      const mobile = window.innerWidth <= 768;
+      setIsmobile(mobile);
+    }
+  }, []);
   const handleScroll = () => {
     const section = document.querySelectorAll(
       "#intropage, #type, #products,#history, #overview"
@@ -88,12 +77,12 @@ const Navbar = () => {
         </div>
         <div
           className={`lg:w-0 xs:mt-8 lg:mt-0 flex  gap-10 lg:pt-9 xs:pt-4 lg:self-start xs:self-center lg:pl-[15rem] xs:pl-7 xs:absolute top-0 lg:static lg:flex-row xs:flex-col lg:bg-none xs:bg-white xs:w-full xs:pb-3 lg:pb-0  left-0 justify-center transition-all duration-200 ease-in  ${
-            mobile === true && NavOpen === false
+            ismobile === true && NavOpen === false
               ? "top-20 shadow-sm"
               : "top-[-400px]"
           }`}
         >
-          {mobile === true && NavOpen === false ? (
+          {ismobile === true && NavOpen === false ? (
             <ul className="flex flex-col gap-10 ">
               {navbar.map((item) => (
                 <li
@@ -165,7 +154,7 @@ const Navbar = () => {
             {NavOpen ? <FaTimes /> : <FaBars />}
           </span> */}
 
-          {mobile === true && NavOpen === false ? (
+          {ismobile === true && NavOpen === false ? (
             <span onClick={() => setNavOpen(true)}>
               <FaTimes />{" "}
             </span>
