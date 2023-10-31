@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaDollarSign,
   FaArrowAltCircleRight,
@@ -39,6 +39,14 @@ const Choosecars = () => {
   const [open, setOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
   const { addTocart } = useCart();
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  // useEffect(() => {
+  //   if (typeof window !== undefined) {
+  //     const mobile = window.innerWidth >= 768;
+  //     setIsLargeScreen(mobile);
+  //   }
+  // }, []);
   const handleHover = (index: number) => {
     setCartText(index);
   };
@@ -75,6 +83,8 @@ const Choosecars = () => {
 
   const visiblecars = allcars ? filteredCars : filteredCars.slice(0, 16);
 
+  // const isLargeScreen = window.innerWidth >= 768;
+
   return (
     <div className="lg:px-32 xs:px-8 pt-9 flex flex-col gap-5 " id="products">
       <div className="flex justify-between items-center relative">
@@ -105,7 +115,7 @@ const Choosecars = () => {
             value={filterValue}
             onChange={handleFilterValueChange}
             placeholder={`Search ${selectedFilter}`}
-            className=" outline-none xs:w-[9rem] lg:w-full"
+            className=" outline-none xs:w-[7rem] lg:w-full"
           />
         </motion.div>
         <motion.div
@@ -154,14 +164,14 @@ const Choosecars = () => {
           <p className="text-center">No result Found</p>
         </div>
       ) : (
-        <motion.div
-          initial={{ opacity: 0, y: -100 }}
-          whileInView={{ opacity: 1, y: 1 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 2 }}
-          className="flex flex-col gap-5"
-        >
-          <div className="grid lg:grid-cols-4  xs:grid-cols-1 lg:pl-16 xs:pl-0 mt-8 gap-5">
+        <div className="flex flex-col gap-5">
+          <div
+            // initial={isLargeScreen ? { opacity: 0, y: 100 } : false}
+            // whileInView={isLargeScreen ? { opacity: 1, y: 0 } : undefined}
+            // viewport={isLargeScreen ? { once: false, amount: 0.25 } : undefined}
+            // transition={isLargeScreen ? { duration: 1 } : undefined}
+            className="grid lg:grid-cols-4  xs:grid-cols-1 lg:pl-16 xs:pl-0 mt-8 gap-5"
+          >
             {visiblecars.map((item) => (
               <div
                 key={item.id}
@@ -221,7 +231,7 @@ const Choosecars = () => {
           </div>
 
           {filterCars.length > 16 && !allcars ? (
-            <div className="flex justify-center items-center ">
+            <div className="flex justify-center items-center my-8">
               <Button
                 text="Show all"
                 textStyles="text-white"
@@ -243,7 +253,7 @@ const Choosecars = () => {
               />
             </div>
           )}
-        </motion.div>
+        </div>
       )}
 
       <Modal isOpen={open} isClose={() => setOpen(false)}>

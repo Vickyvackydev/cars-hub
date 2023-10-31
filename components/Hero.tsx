@@ -34,17 +34,12 @@ const Hero = () => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: false, amount: 0.25 }}
         transition={{ duration: 1 }}
-        className="flex flex-col justify-end items-end pr-5"
+        className="flex flex-col justify-end items-end lg:pr-5 xs:pr-10"
       >
         <span className="italic lg:text-4xl xs:text-2xl  font-semibold ">
           Explore your desired <span className="text-red-400">Ride</span>
         </span>
-        <Image
-          src="/arrow_pink.png"
-          width={100}
-          height={100}
-          alt="line image"
-        />
+        <Image src="/one_flag.png" width={100} height={100} alt="line image" />
       </motion.div>
 
       <div className="flex flex-1 px-20 lg:flex-row xs:flex-col">

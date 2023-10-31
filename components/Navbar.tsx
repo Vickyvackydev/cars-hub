@@ -66,7 +66,7 @@ const Navbar = () => {
       <div className="flex flex-1 justify-between items-start">
         <div
           className="flex gap-4 cursor-pointer"
-          onClick={() => router.push("/HomePage")}
+          onClick={() => router.push("/")}
         >
           <span className="lg:pt-[2.1rem] xs:pt-[2.5rem] lg:text-5xl xs:text-3xl text-red-400">
             <FaCar />
@@ -83,7 +83,7 @@ const Navbar = () => {
           }`}
         >
           {ismobile === true && NavOpen === false ? (
-            <ul className="flex flex-col gap-10 ">
+            <ul className="flex xs:flex-col lg:flex-row gap-10 ">
               {navbar.map((item) => (
                 <li
                   key={item.href}
@@ -132,7 +132,7 @@ const Navbar = () => {
 
         <Link
           href="/cart"
-          className="w-10 h-10 rounded-full items-center flex justify-center bg-red-400 absolute lg:right-[5rem] xs:right-[2rem] top-[15rem] lg:z-50 xs:-z-10"
+          className="w-10 h-10 rounded-full items-center flex justify-center bg-red-400 absolute lg:right-[5rem] xs:right-[2rem] lg:top-[15rem] xs:top-[13rem] lg:z-50 xs:-z-10"
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >

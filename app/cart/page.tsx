@@ -12,6 +12,7 @@ import {
 import {
   FaArrowAltCircleLeft,
   FaArrowAltCircleRight,
+  FaCheck,
   FaCheckCircle,
   FaDollarSign,
   FaEdit,
@@ -56,6 +57,7 @@ const CartPage = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [pdfModal, setPdfModal] = useState(false);
+  const [check, setCheck] = useState(false);
 
   const {
     countitems,
@@ -91,10 +93,6 @@ const CartPage = () => {
 
   const todayTime = `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
 
-  // const IsThereData = () => {
-  //   return !Object.values(formData).every((value) => value.trim() !== "");
-  // };
-
   const IsThereData =
     formData.name === "" ||
     formData.other === "" ||
@@ -103,7 +101,8 @@ const CartPage = () => {
     formData.ship_add === "" ||
     formData.card_no.length !== 16 ||
     formData.exp_date.length !== 5 ||
-    formData.number.length !== 11;
+    formData.number.length !== 11 ||
+    !check;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -133,6 +132,14 @@ const CartPage = () => {
     }
   };
 
+  const handleCheck = (checked: boolean) => {
+    if (check) {
+      setCheck(checked);
+    } else {
+      setCheck(false);
+    }
+    // setCheck(true);
+  };
   const handleEdit = () => {
     setFormData({ ...formData });
     setFormModal(true);
@@ -213,7 +220,6 @@ const CartPage = () => {
   };
 
   const MyDocument = () => {
-    const itemsCounted = countitems(0);
     return (
       <Document>
         <Page size="A4" style={styles.page}>
@@ -325,7 +331,7 @@ const CartPage = () => {
               <span className=" text-xl text-red-400 font-semibold">
                 No Items Added
               </span>
-              <p className="text-lg font-medium text-slate-700 ">
+              <p className="text-lg font-medium text-slate-700 xs:text-center lg:text-start ">
                 Add items to your cart
               </p>
               <Button
@@ -334,7 +340,7 @@ const CartPage = () => {
                 btnStyles="bg-red-400 mt-10 py-2 px-3 rounded-lg gap-1"
                 icon={<FaPlusCircle />}
                 iconStyles="text-white pt-1"
-                handleClick={() => router.push("/HomePage")}
+                handleClick={() => router.push("/")}
               />
             </div>
           ) : (
@@ -609,6 +615,24 @@ const CartPage = () => {
                   className="w-full border py-3 px-2 rounded-lg  placeholder:text-gray-300 outline-none"
                 />
               </div>
+
+              <div className="flex gap-2 mt-3">
+                <div
+                  className={`w-5 h-5 rounded-md flex justify-center items-center border ${
+                    check ? "bg-red-400" : ""
+                  }`}
+                  onClick={() => setCheck((prev) => !prev)}
+                >
+                  {check ? (
+                    <span className="text-sm text-white">
+                      <FaCheck />
+                    </span>
+                  ) : null}
+                </div>
+                <span className="text-sm text-start">
+                  I agree to the terms and conditions
+                </span>
+              </div>
             </form>
 
             <div className="flex justify-center items-center">
@@ -811,13 +835,19 @@ const CartPage = () => {
             <span className="text-red-400 text-2xl ">
               Proceed to download your receipt
             </span>
+            <p className="text-sm">
+              Note: your receipt may not look as appeared on our site.
+            </p>
           </div>
 
           <PDFDownloadLink
             document={<MyDocument />}
             fileName="receipt.pdf"
             className="bg-red-400 px-3 py-2 mt-7 text-white rounded-lg hover:scale-90 transition-all "
-            onClick={() => setPdfDownload(false)}
+            onClick={() => {
+              setPdfDownload(false);
+              router.push("/");
+            }}
           >
             {({ blob, url, loading, error }) => (
               <div className="flex gap-3 ">

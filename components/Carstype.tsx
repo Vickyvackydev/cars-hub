@@ -79,7 +79,7 @@ const Carstype = () => {
           whileInView={{ opacity: 1, x: 1 }}
           viewport={{ once: false, amount: 0.25 }}
           transition={{ duration: 1 }}
-          className="W-full h-full  flex flex-col border px-7 py-4 gap-3 rounded-lg shadow-box bg-white bg-opacity-30  lg:block xs:hidden"
+          className="W-full h-full  flex flex-col border px-7 py-4 gap-3 rounded-lg shadow-box bg-white bg-opacity-30 lg:block xs:hidden"
         >
           <span className="text-2xl flex justify-center items-center font-medium">
             Models

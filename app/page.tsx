@@ -9,7 +9,7 @@ import CarsLogo from "@/components/CarsLogo";
 
 const Home = () => {
   return (
-    <div className="sm:flex sm:flex-col h-fit pt-32">
+    <div className="sm:flex sm:flex-col h-fit pt-32 w-fit lg:overflow-x-hidden xs:overflow-x-auto">
       <Hero />
       <Intropage />
       <Carstype />
