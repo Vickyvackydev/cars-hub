@@ -13,8 +13,11 @@ const LastInfoPage = () => {
     }
   };
   return (
-    <div className="lg:px-24 xs:px-10 py-16 mb-9" id="overview">
-      <div className="flex justify-between lg:flex-row xs:flex-col-reverse">
+    <div
+      className="lg:px-24 xs:px-10 xxs:px-[15.5rem] w-full py-16 mb-9 relative xxs:pl-5 lg:pl-20 "
+      id="overview"
+    >
+      <div className="flex justify-between lg:flex-row xs:flex-col-reverse xxs:flex-col-reverse">
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 1 }}
@@ -28,7 +31,7 @@ const LastInfoPage = () => {
             width={1000}
             height={1000}
             alt=""
-            className="absolute top-8 right-0 lg:left-8 xs:left-3"
+            className="lg:absolute xxs:relative top-8 right-0 lg:left-8 xs:left-3"
           />
         </motion.div>
         <motion.div

@@ -92,7 +92,7 @@ export const CartProvider = ({ children }: childrenProps) => {
   const closeModal = () => {
     setDeleteCart(false);
   };
-  const confirmDelete = (item: Item) => {
+  const confirmDelete = () => {
     if (itemTodelete) {
       // const updatedCart = cartItems.filter(
       //   (cartItem) => cartItem.id !== itemTodelete.id

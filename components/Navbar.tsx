@@ -60,15 +60,15 @@ const Navbar = () => {
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className="lg:py-5 xs:py-3 lg:px-20 xs:px-3 fixed w-full bg-white z-20"
+      className="lg:py-5 xs:py-3 lg:px-20 xs:px-3 fixed  lg:w-full xxs:max-w-full bg-white z-20"
       style={{ boxShadow: headerShadow }}
     >
       <div className="flex flex-1 justify-between items-start">
         <div
-          className="flex gap-4 cursor-pointer"
+          className="flex lg:gap-4 xxs:gap-2 cursor-pointer lg:mr-0 xxs:mr-[3.5rem]"
           onClick={() => router.push("/")}
         >
-          <span className="lg:pt-[2.1rem] xs:pt-[2.5rem] lg:text-5xl xs:text-3xl text-red-400">
+          <span className="lg:pt-[2.1rem] xs:pt-[2.5rem] lg:pl-0 xxs:pl-2 lg:text-5xl xs:text-3xl text-red-400 xxs:pt-[2.575rem]">
             <FaCar />
           </span>
           <span className="lg:text-3xl xs:text-xl pt-10 font-semibold">
@@ -76,14 +76,14 @@ const Navbar = () => {
           </span>
         </div>
         <div
-          className={`lg:w-0 xs:mt-8 lg:mt-0 flex  gap-10 lg:pt-9 xs:pt-4 lg:self-start xs:self-center lg:pl-[15rem] xs:pl-7 xs:absolute top-0 lg:static lg:flex-row xs:flex-col lg:bg-none xs:bg-white xs:w-full xs:pb-3 lg:pb-0  left-0 justify-center transition-all duration-200 ease-in  ${
+          className={`lg:w-0 xs:mt-8 lg:mt-0 flex  gap-10 lg:pt-9 xs:pt-4 lg:self-start xs:self-center lg:pl-[15rem] xs:pl-7 xxs:pl-4 xs:absolute xxs:absolute top-0 lg:static lg:flex-row xs:flex-col lg:bg-none xs:bg-white xxs:bg-white xs:w-full xxs:w-full xxs:shadow-none xs:pb-3 lg:pb-0  left-0 justify-center transition-all duration-200 ease-in  ${
             ismobile === true && NavOpen === false
               ? "top-20 shadow-sm"
               : "top-[-400px]"
           }`}
         >
           {ismobile === true && NavOpen === false ? (
-            <ul className="flex xs:flex-col lg:flex-row gap-10 ">
+            <ul className="flex xs:flex-col lg:flex-row gap-10 xxs:flex-col">
               {navbar.map((item) => (
                 <li
                   key={item.href}
@@ -124,7 +124,7 @@ const Navbar = () => {
         <Button
           text="Get us"
           textStyles="text-white text-lg"
-          btnStyles="bg-red-400 w-fit h-fit rounded-lg py-3 mt-6 lg:ml-[15rem] xs:ml-[5rem] flex gap-2 flex-row-reverse "
+          btnStyles="bg-red-400 w-fit h-fit rounded-lg py-3 mt-6 lg:ml-[15rem] xs:ml-[5rem] xxs:mr-2 lg:mr-0 flex gap-2 flex-row-reverse lg:scale-110 xxs:scale-90"
           icon={<FaPaperPlane />}
           iconStyles="text-white pt-[0.4rem]"
           handleClick={() => router.push("/contact_info")}
@@ -132,7 +132,7 @@ const Navbar = () => {
 
         <Link
           href="/cart"
-          className="w-10 h-10 rounded-full items-center flex justify-center bg-red-400 absolute lg:right-[5rem] xs:right-[2rem] lg:top-[15rem] xs:top-[13rem] lg:z-50 xs:-z-10"
+          className="w-10 h-10 rounded-full items-center flex justify-center bg-red-400 absolute lg:right-[5rem] xs:right-[2rem] lg:top-[15rem] xs:top-[13rem] lg:z-50 xs:-z-10 xxs:right-0 xxs:top-[10rem]"
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >
@@ -145,11 +145,11 @@ const Navbar = () => {
           )}
         </Link>
         {hover && (
-          <span className="top-[17rem] absolute right-3 bg-white w-fit h-fit rounded-lg px-3 py-1 text-red-400 shadow-md ">
+          <span className="top-[17rem] absolute right-3 bg-white w-fit h-fit rounded-lg px-3 py-1 text-red-400 shadow-md block lg:block xxs:hidden">
             Your cart
           </span>
         )}
-        <div className="hidden lg:hidden xs:block z-50  cursor-pointer pt-10 text-2xl">
+        <div className="hidden lg:hidden xs:block xxs:block z-50  cursor-pointer pt-10 text-2xl">
           {/* <span onClick={() => setNavOpen((prev) => !prev)}>
             {NavOpen ? <FaTimes /> : <FaBars />}
           </span> */}

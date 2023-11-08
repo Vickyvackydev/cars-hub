@@ -44,7 +44,7 @@ const Carstype = () => {
 
   return (
     <div
-      className="lg:px-32 x:px-10  xs:pl-10 lg:pl-0 pt-20 bg-gray-500 bg-opacity-5 mt-16 flex justify-center items-center lg:flex-row xs:flex-col xs:relative"
+      className="lg:px-32 xxs:px-[17rem] xxs:pl-0  xs:pl-10 lg:pl-0 pt-20 bg-gray-500 bg-opacity-5 mt-16 flex justify-center items-center lg:flex-row xxs:flex-col xs:relative max-w-full"
       id="type"
     >
       <div className="flex">
@@ -79,7 +79,7 @@ const Carstype = () => {
           whileInView={{ opacity: 1, x: 1 }}
           viewport={{ once: false, amount: 0.25 }}
           transition={{ duration: 1 }}
-          className="W-full h-full  flex flex-col border px-7 py-4 gap-3 rounded-lg shadow-box bg-white bg-opacity-30 lg:block xs:hidden"
+          className="W-full h-full  flex flex-col border px-7 py-4 gap-3 rounded-lg shadow-box bg-white bg-opacity-30 lg:block xs:hidden xxs:hidden"
         >
           <span className="text-2xl flex justify-center items-center font-medium">
             Models

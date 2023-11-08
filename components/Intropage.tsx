@@ -54,7 +54,7 @@ const Intropage = () => {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: false, amount: 0.25 }}
       transition={{ duration: 2 }}
-      className="lg:px-24 xs:px-10 pt-9"
+      className="lg:px-24 xs:px-10 xxs:px-[14rem] pt-9 lg:pl-[6rem] xxs:pl-2"
       id="intropage"
     >
       <div className="flex justify-between items-center">
@@ -69,18 +69,18 @@ const Intropage = () => {
           <span className=" lg:text-4xl xs:text-xl font-semibold text-slate-900 pt-3">
             Who Are We
           </span>
-          <div className="w-8 h-3 bg-red-400 rounded-lg lg:block xs:hidden block"></div>
+          <div className="w-8 h-3 bg-red-400 rounded-lg lg:block xs:hidden block xxs:hidden"></div>
           <Image
             src="/cartoon.png"
             width={100}
             height={100}
             alt=""
-            className="scale-x-[-1] lg:block xs:hidden block"
+            className="scale-x-[-1] lg:block xs:hidden block xxs:hidden"
           />
         </motion.div>
         <div className="w-8 h-3 bg-red-400 rounded-lg "></div>
       </div>
-      <div className="flex gap-5 mt-10 lg:flex-row xs:flex-col">
+      <div className="flex gap-5 mt-10 lg:flex-row xs:flex-col xxs:flex-col w-full">
         {intro.map((item, i) => {
           if (i === 0) {
             return (

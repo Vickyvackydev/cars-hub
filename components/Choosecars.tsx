@@ -86,14 +86,17 @@ const Choosecars = () => {
   // const isLargeScreen = window.innerWidth >= 768;
 
   return (
-    <div className="lg:px-32 xs:px-8 pt-9 flex flex-col gap-5 " id="products">
-      <div className="flex justify-between items-center relative">
+    <div
+      className="lg:px-32 xs:px-8 xxs:px-0 pt-9 flex flex-col gap-5 lg:max-w-full xxs:max-w-fit"
+      id="products"
+    >
+      <div className="flex justify-between items-center  relative">
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 1 }}
           viewport={{ once: false, amount: 0.25 }}
           transition={{ duration: 1 }}
-          className="flex gap-3 xs:hidden lg:block"
+          className="flex gap-3 xs:hidden lg:block xxs:hidden"
         >
           <span className=" text-2xl text-slate-900 font-semibold pt-3">
             Choose Awesome Car
@@ -105,7 +108,7 @@ const Choosecars = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: false, amount: 0.25 }}
           transition={{ duration: 1 }}
-          className="border lg:w-[30rem] xs:w-[10rem] rounded-lg pl-3 py-3 outline-none flex gap-3"
+          className="border lg:w-[30rem] xs:w-[10rem] rounded-lg pl-3 lg:py-3 xxs:py-1 outline-none flex lg:gap-3 xxs:gap-2 lg:ml-0 xxs:ml-3"
         >
           <span className="pt-[0.125rem] text-red-400">
             <FaSearch />
@@ -115,22 +118,22 @@ const Choosecars = () => {
             value={filterValue}
             onChange={handleFilterValueChange}
             placeholder={`Search ${selectedFilter}`}
-            className=" outline-none xs:w-[7rem] lg:w-full"
+            className=" outline-none xs:w-[7rem] lg:w-full xxs:w-[6rem]"
           />
         </motion.div>
         <motion.div
-          className="flex gap-2 lg:flex-row xs:flex-col "
+          className="flex gap-2 lg:flex-row xs:flex-col xxs:flex-col lg:pl-0 xxs:pl-0 lg:pr-0 xxs:pr-[15rem]"
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: false, amount: 0.25 }}
           transition={{ duration: 1 }}
         >
-          <span className="pt-1 lg:pl-0 xs:pl-3 block lg:block xs:hidden">
+          <span className="pt-1 lg:pl-0 xs:pl-3 block lg:block xxs:hidden lg:text-lg xxs:text-sm ">
             Search by
           </span>
           <button
             type="button"
-            className="w-fit h-fit flex bg-gray-100 px-5 py-1 rounded-lg gap-3"
+            className="w-fit h-fit flex bg-gray-100 px-5 py-1 rounded-lg gap-3 lg:ml-0 xxs:ml-9"
             onClick={() => setDropDown((prev) => !prev)}
           >
             <span>{selectedFilter}</span>
@@ -144,7 +147,7 @@ const Choosecars = () => {
           </button>
 
           {dropDown && (
-            <div className="absolute flex flex-col gap-2 w-fit h-fit shadow-box rounded-lg border justify-center items-center py-4 top-8 right-1 px-2 mt-3 bg-white">
+            <div className="absolute flex flex-col gap-2 w-fit h-fit shadow-box rounded-lg border justify-center items-center py-4 top-8 lg:right-1 xxs:right-[15rem] px-2 mt-3 bg-white">
               {filters.map((item, i) => (
                 <span
                   key={i}
@@ -158,104 +161,99 @@ const Choosecars = () => {
           )}
         </motion.div>
       </div>
-      {visiblecars.length === 0 ? (
-        <div className="flex justify-center items-center flex-col opacity-20 lg:text-5xl xs:text-3xl mt-8">
-          <span>Oops!! </span>
-          <p className="text-center">No result Found</p>
-        </div>
-      ) : (
-        <div className="flex flex-col gap-5">
-          <div
-            // initial={isLargeScreen ? { opacity: 0, y: 100 } : false}
-            // whileInView={isLargeScreen ? { opacity: 1, y: 0 } : undefined}
-            // viewport={isLargeScreen ? { once: false, amount: 0.25 } : undefined}
-            // transition={isLargeScreen ? { duration: 1 } : undefined}
-            className="grid lg:grid-cols-4  xs:grid-cols-1 lg:pl-16 xs:pl-0 mt-8 gap-5"
-          >
-            {visiblecars.map((item) => (
-              <div
-                key={item.id}
-                className="shadow-md w-full h-[300px] border-2 rounded-lg"
-              >
-                <div className="bg-gray-200 h-[150px] pt-4">
-                  <Image
-                    src={item.img}
-                    width={300}
-                    height={300}
-                    alt=""
-                    className="object-contain"
-                  />
-                </div>
-                <div className="px-5 mt-4 flex justify-between py-5 relative">
-                  <div className="flex flex-col ">
-                    <span className="text-lg font-bold text-[#333]">
-                      {item.name}
-                    </span>
-
-                    <span className="text-[#333] font-semibold">
-                      {item.class}
-                    </span>
-                    <span className="text-red-400">{item.model}</span>
-                  </div>
-                  <div className="flex flex-col gap-5">
-                    <button
-                      onClick={() => handleOpen(item)}
-                      className="bg-red-400 w-fit h-fit py-1 rounded-lg  flex  hover:scale-90 transition-all gap-3 text-white px-3"
-                    >
-                      <span className="pt-[0.25rem]">
-                        <FaInfoCircle />
-                      </span>
-                      <span className="font-mono">details</span>
-                    </button>
-
-                    <div className="flex gap-5">
-                      <span className="text-lg font-medium text-red-400">{`$ ${item.price}k`}</span>
-                      <span
-                        className="pt-1 cursor-pointer hover:scale-90 hover:text-red-400"
-                        onMouseEnter={() => handleHover(item.id)}
-                        onMouseLeave={() => setCartText(null)}
-                        onClick={() => addTocart(item)}
-                      >
-                        <FaShoppingCart />
-                      </span>
-                    </div>
-                    {cartText === item.id && (
-                      <span className="absolute top-10 bg-white w-fit h-fit shadow-sm px-2 rounded-md text-red-400 font-medium">
-                        {item.stats}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
+      <div className="lg:pr-0 xxs:pr-10">
+        {visiblecars.length === 0 ? (
+          <div className="flex justify-center items-center flex-col opacity-20 lg:text-5xl xxs:text-3xl mt-8 lg:pr-0 xxs:pr-[13rem]">
+            <span>Oops!! </span>
+            <p className="text-center">No result Found</p>
           </div>
+        ) : (
+          <div className="flex flex-col gap-5">
+            <div className="grid lg:grid-cols-4  xs:grid-cols-1 lg:pl-16 xs:pl-0 xxs:pl-3 mt-8 gap-5 lg:px-0 xxs:px-[12rem]">
+              {visiblecars.map((item) => (
+                <div
+                  key={item.id}
+                  className="shadow-md lg:w-full h-[300px] border-2 rounded-lg "
+                >
+                  <div className="bg-gray-200 h-[150px] pt-4">
+                    <Image
+                      src={item.img}
+                      width={300}
+                      height={300}
+                      alt=""
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="px-5 mt-4 flex justify-between py-5 relative">
+                    <div className="flex flex-col ">
+                      <span className="text-lg font-bold text-[#333]">
+                        {item.name}
+                      </span>
 
-          {filterCars.length > 16 && !allcars ? (
-            <div className="flex justify-center items-center my-8">
-              <Button
-                text="Show all"
-                textStyles="text-white"
-                btnStyles="w-fit h-fit bg-red-400 py-2 rounded-lg flex  hover:scale-90 transition-all gap-2 flex-row-reverse"
-                icon={<FaArrowAltCircleRight />}
-                iconStyles="text-white pt-[0.2rem]"
-                handleClick={handleAddCars}
-              />
-            </div>
-          ) : (
-            <div className="flex justify-center items-center ">
-              <Button
-                text="Show less"
-                textStyles="text-white"
-                btnStyles="w-fit h-fit bg-red-400 py-2 rounded-lg flex  hover:scale-90 transition-all gap-2 "
-                icon={<FaArrowAltCircleLeft />}
-                iconStyles="text-white pt-[0.2rem]"
-                handleClick={handleReduceCars}
-              />
-            </div>
-          )}
-        </div>
-      )}
+                      <span className="text-[#333] font-semibold">
+                        {item.class}
+                      </span>
+                      <span className="text-red-400">{item.model}</span>
+                    </div>
+                    <div className="flex flex-col gap-5">
+                      <button
+                        onClick={() => handleOpen(item)}
+                        className="bg-red-400 w-fit h-fit py-1 rounded-lg  flex  hover:scale-90 transition-all gap-3 text-white px-3"
+                      >
+                        <span className="pt-[0.25rem]">
+                          <FaInfoCircle />
+                        </span>
+                        <span className="font-mono">details</span>
+                      </button>
 
+                      <div className="flex gap-5">
+                        <span className="text-lg font-medium text-red-400">{`$ ${item.price}k`}</span>
+                        <span
+                          className="pt-1 cursor-pointer hover:scale-90 hover:text-red-400"
+                          onMouseEnter={() => handleHover(item.id)}
+                          onMouseLeave={() => setCartText(null)}
+                          onClick={() => addTocart(item)}
+                        >
+                          <FaShoppingCart />
+                        </span>
+                      </div>
+                      {cartText === item.id && (
+                        <span className="absolute top-10 bg-white w-fit h-fit shadow-sm px-2 rounded-md text-red-400 font-medium">
+                          {item.stats}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {filterCars.length > 16 && !allcars ? (
+              <div className="flex justify-center items-center my-8 lg:pr-0 xxs:pr-[15rem]">
+                <Button
+                  text="Show all"
+                  textStyles="text-white"
+                  btnStyles="w-fit h-fit bg-red-400 py-2 rounded-lg flex  hover:scale-90 transition-all gap-2 flex-row-reverse"
+                  icon={<FaArrowAltCircleRight />}
+                  iconStyles="text-white pt-[0.2rem]"
+                  handleClick={handleAddCars}
+                />
+              </div>
+            ) : (
+              <div className="flex justify-center items-center my-8 lg:pr-0 xxs:pr-[15rem]">
+                <Button
+                  text="Show less"
+                  textStyles="text-white"
+                  btnStyles="w-fit h-fit bg-red-400 py-2 rounded-lg flex  hover:scale-90 transition-all gap-2 "
+                  icon={<FaArrowAltCircleLeft />}
+                  iconStyles="text-white pt-[0.2rem]"
+                  handleClick={handleReduceCars}
+                />
+              </div>
+            )}
+          </div>
+        )}
+      </div>
       <Modal isOpen={open} isClose={() => setOpen(false)}>
         <div>
           <div className="bg-gray-300 w-full h-full rounded-lg items-center justify-center flex">

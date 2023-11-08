@@ -65,9 +65,9 @@ const Footer: React.FC = () => {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: false, amount: 0.25 }}
       transition={{ duration: 2 }}
-      className="w-full pt-16 lg:px-24 xs:px-10 border"
+      className="w-full pt-16 lg:px-24 xs:px-10 xxs:px-[6rem] border lg:pl-20 xxs:pl-5"
     >
-      <div className="flex justify-between items-center xs:flex-col lg:flex-row xs:gap-10 xs:items-start">
+      <div className="flex justify-between items-center xs:flex-col lg:flex-row xs:gap-10 xxs:gap-10 xs:items-start xxs:flex-col xxs:items-start">
         <div className="max-w-xl">
           <div className="flex flex-col gap-5">
             <Link href="/" className="flex gap-4 ">
@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
               </span>
             </Link>
 
-            <span className=" text-slate-900  text-start">
+            <span className=" text-slate-900  text-left">
               {/* Getlinked Tech Hackathon is a technology innovation program
               established by a group of organizations with the aim of showcasing
               young and talented individuals in the field of technology */}

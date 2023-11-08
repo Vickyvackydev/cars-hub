@@ -1,5 +1,5 @@
 "use client";
-import { Item, useCart } from "@/components/CartProvider";
+import { useCart } from "@/components/CartProvider";
 import React, { useState, useEffect } from "react";
 import {
   PDFDownloadLink,
@@ -15,7 +15,6 @@ import {
   FaCheck,
   FaCheckCircle,
   FaDollarSign,
-  FaEdit,
   FaFileDownload,
   FaFilePdf,
   FaPencilAlt,
@@ -65,7 +64,7 @@ const CartPage = () => {
     // removeFromCart,
     cartItems,
     totalPrice,
-    closeModal,
+
     itemTodelete,
     handleDeleted,
     confirmDelete,
@@ -132,14 +131,6 @@ const CartPage = () => {
     }
   };
 
-  const handleCheck = (checked: boolean) => {
-    if (check) {
-      setCheck(checked);
-    } else {
-      setCheck(false);
-    }
-    // setCheck(true);
-  };
   const handleEdit = () => {
     setFormData({ ...formData });
     setFormModal(true);
@@ -309,13 +300,13 @@ const CartPage = () => {
   });
   return (
     <div>
-      <div className="pt-[10rem] flex justify-center items-center flex-col gap-5 lg:px-32 xs:px-0">
+      <div className="pt-[10rem] flex justify-center items-center flex-col gap-5 lg:px-32 xxs:px-0 overflow-x-hidden">
         <motion.span
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: false, amount: 0.25 }}
           transition={{ duration: 2 }}
-          className="text-4xl font-semibold  text-red-400"
+          className="text-4xl font-semibold  text-red-400 lg:pr-0 xxs:pr-16"
         >
           Your cart
         </motion.span>
@@ -324,7 +315,7 @@ const CartPage = () => {
           whileInView={{ opacity: 1, x: 1 }}
           viewport={{ once: false, amount: 0.25 }}
           transition={{ duration: 2 }}
-          className="w-full h-full bg-white lg:shadow-md xs:shadow-none rounded-lg px-7 py-7"
+          className="w-full h-full bg-white lg:shadow-md xs:shadow-none rounded-lg lg:px-7 xxs:px-4  py-7 lg:pl-0 xxs:pl-0 lg:overflow-x-hidden xxs:overflow-x-scroll"
         >
           {cartItems.length === 0 ? (
             <div className="py-20 px-20 flex justify-center items-center flex-col">
@@ -346,7 +337,10 @@ const CartPage = () => {
           ) : (
             <div className="">
               {cartItems.map((item, i) => (
-                <div key={i} className="grid grid-cols-3 gap-5 border-b-2 pb-6">
+                <div
+                  key={i}
+                  className="grid lg:grid-cols-3 xxs:grid-cols-2 lg:gap-5 xxs:gap-1 border-b-2 pb-6 "
+                >
                   <div>
                     <img src={item.img} alt="" width={200} height={200} />
                   </div>
@@ -359,9 +353,9 @@ const CartPage = () => {
                     </span>
                   </div>
 
-                  <div className="flex justify-between lg:pt-5 xs:pt-3 items-center flex-1">
-                    <div className="flex justify-around flex-1 xs:flex-col lg:flex-row">
-                      <span className="text-gray-400 xs:text-xs lg:text-lg">
+                  <div className="flex justify-between lg:pt-5 xs:pt-3 items-center flex-1 lg:flex-row xxs:flex-col lg:pr-0 xxs:pr-16">
+                    <div className="flex justify-around flex-1 xs:flex-col xxs:flex-col lg:flex-row">
+                      <span className="text-gray-400 xs:text-xs lg:text-lg block lg:block xxs:hidden">
                         {item.model}
                       </span>
                       <span className="text-red-400 font-semibold  xs:text-xs lg:text-lg">
@@ -400,7 +394,7 @@ const CartPage = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, amount: 0.25 }}
         transition={{ duration: 2 }}
-        className="flex justify-center py-5 items-center lg:gap-[20rem] xs:gap-[5rem]"
+        className="flex justify-center py-5 items-center lg:gap-[20rem] xxs:gap-[3rem] lg:pr-0 xxs:pr-10 lg:flex-row xxs:flex-col"
       >
         {cartItems.length !== 0 && (
           <>
@@ -410,7 +404,7 @@ const CartPage = () => {
               text="Add more"
               icon={<FaPlusCircle />}
               iconStyles="pt-[0.4rem] text-white"
-              handleClick={() => router.push("/HomePage")}
+              handleClick={() => router.push("/")}
             />
             <Button
               btnStyles="w-fit h-fit border-red-400 border-2 shadow-sm py-3 px-5 rounded-md gap-2"

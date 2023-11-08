@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 const Privacy = () => {
   return (
-    <div className="lg:px-32 xs:px-10 mt-14 mb-20">
+    <div className="lg:px-32 xs:px-10 xxs:px-[14.3rem] mt-14 mb-20 w-full lg:pl-28 xxs:pl-3">
       <motion.div
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -27,7 +27,7 @@ const Privacy = () => {
       </motion.div>
 
       <motion.div
-        className="flex mt-16 gap-5 relative lg:flex-row xs:flex-col"
+        className="flex mt-16 gap-5 relative lg:flex-row xs:flex-col xxs:flex-col"
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 1 }}
         viewport={{ once: false, amount: 0.25 }}

@@ -91,7 +91,7 @@ const SuccessFull = () => {
     }
   };
   return (
-    <div className="flex justify-between  xs:flex-col lg:flex-row pt-[10rem] lg:px-24 xs:px-10 bg-gif pb-5">
+    <div className="flex justify-between  xxs:flex-col lg:flex-row pt-[10rem] lg:px-24 xxs:px-20 bg-gif pb-5 lg:pl-0 xxs:pl-0">
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -131,7 +131,7 @@ const SuccessFull = () => {
             icon={<FaArrowAltCircleLeft />}
             iconStyles="text-white pt-[0.125rem]"
             btnStyles="bg-red-400 px-3 py-2 rounded-lg"
-            handleClick={() => router.push("/HomePage")}
+            handleClick={() => router.push("/")}
           />
         </div>
       </motion.div>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const CarsLogo = () => {
   return (
-    <div className="py-16 flex justify-center items-center lg:px-0 xs:px-10">
+    <div className="py-16 flex justify-center items-center lg:px-0 xs:px-10 xxs:px-[16rem] lg:pl-0 xxs:pl-4">
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         whileInView={{ opacity: 1, scale: 1 }}

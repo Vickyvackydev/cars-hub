@@ -24,11 +24,10 @@ const History = () => {
   const [date, setDate] = useState(false);
   return (
     <div
-      className="lg:px-32 xs:px-10 lg:pt-12  xs:pt-1 bg-gray-400 bg-opacity-10 lg:mt-12 xs:mt-1 pb-11 "
+      className="lg:px-32 xs:px-10 xxs:px-[15rem] lg:pt-12  xs:pt-1 bg-gray-400 bg-opacity-10 lg:mt-12 xs:mt-1 pb-11 lg:pl-20 xxs:pl-3  "
       id="history"
-      // style={{ backgroundImage: "url('benz.jpg')" }}
     >
-      <div className="flex gap-10 mt-10 py-10 lg:flex-row xs:flex-col">
+      <div className="flex gap-10 mt-10 py-10 lg:flex-row xs:flex-col xxs:flex-col">
         <motion.div
           className="max-w-lg "
           initial={{ opacity: 0, x: -100 }}

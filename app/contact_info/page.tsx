@@ -64,7 +64,7 @@ const ContactUs = () => {
     formInput.message === "";
 
   return (
-    <main className="pt-[10rem] flex justify-between lg:flex-row xs:flex-col lg:px-24 xs:px-10 pb-10">
+    <main className="pt-[10rem] flex justify-between lg:flex-row xxs:flex-col lg:px-24 xxs:px-20 pb-10 lg:pl-0 xxs:pl-0">
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         whileInView={{ opacity: 1, scale: 1 }}
